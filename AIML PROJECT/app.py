@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
+def home():
+    return render_template('index.html')
 # Function to plot input feature values
 def plot_input_features(input_data):
     """
