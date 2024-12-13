@@ -7,6 +7,12 @@ app = Flask(__name__)
 
 def home():
     return render_template('index.html')
+
+port = int(os.environ.get('PORT', 5000))
+
+# Run the Flask app with debug enabled and on the correct host and port
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=port)
 # Function to plot input feature values
 def plot_input_features(input_data):
     """
