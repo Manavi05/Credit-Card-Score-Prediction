@@ -2,8 +2,19 @@ from flask import Flask, render_template, request
 import pickle
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 app = Flask(__name__)
+
+# Load the trained model
+with open("trained_model.pkl", "rb") as file:
+    model = pickle.load(file)
+
+# Routes and other functions (unchanged)...
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 # Function to plot input feature values
 def plot_input_features(input_data):
