@@ -10,12 +10,6 @@ app = Flask(__name__)
 with open("trained_model.pkl", "rb") as file:
     model = pickle.load(file)
 
-# Routes and other functions (unchanged)...
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
-
 # Function to plot input feature values
 def plot_input_features(input_data):
     """
@@ -58,14 +52,9 @@ def plot_prediction_distribution(predictions):
     plt.savefig('static/prediction_distribution_plot.png')  # Save the plot
     plt.close()
 
-# Load the trained model
-with open("trained_model.pkl", "rb") as file:
-    model = pickle.load(file) 
-
 # Home route for displaying the input form
 @app.route('/', methods=['GET', 'POST'])
 def index():
-     return render_template('index.html')
     if request.method == 'POST':
         try:
             # Get input values from the form
@@ -100,4 +89,5 @@ def index():
 
 # Run the Flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
