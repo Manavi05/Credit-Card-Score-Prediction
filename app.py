@@ -65,6 +65,7 @@ with open("trained_model.pkl", "rb") as file:
 # Home route for displaying the input form
 @app.route('/', methods=['GET', 'POST'])
 def index():
+     return render_template('index.html')
     if request.method == 'POST':
         try:
             # Get input values from the form
